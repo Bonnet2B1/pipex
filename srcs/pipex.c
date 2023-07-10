@@ -6,7 +6,7 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 18:51:40 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/10 19:08:02 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:20:53 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int main(void)
     printf("Je suis le pere, et mon pid = %d. Le pid de mon fils = %d\n", getpid(), pid);
   else
     printf("Je suis le fils, et mon pid = %d\n", getpid());
-
   return 0;
 }
  
