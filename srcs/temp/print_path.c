@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_init.c                                      :+:      :+:    :+:   */
+/*   print_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 16:45:25 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/17 18:02:50 by edelarbr         ###   ########.fr       */
+/*   Created: 2023/07/17 17:55:39 by edelarbr          #+#    #+#             */
+/*   Updated: 2023/07/17 17:57:00 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-t_pip *pip_init(t_pip *p, char **argv, char **env)
+void	print_path(t_pip *p)
 {
-	p->argv = argv;
-	p->path = get_path(env);
-	return (p);
+	int	i;
+
+	i = -1;
+	printf("PATH:\n");
+	while (p->path[++i])
+		printf("%s\n", p->path[i]);
 }

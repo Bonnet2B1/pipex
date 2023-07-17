@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_init.c                                      :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 16:45:25 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/17 18:02:50 by edelarbr         ###   ########.fr       */
+/*   Created: 2016/04/18 10:48:56 by ggane             #+#    #+#             */
+/*   Updated: 2023/07/17 17:49:42 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-t_pip *pip_init(t_pip *p, char **argv, char **env)
+int	ft_isascii(int c)
 {
-	p->argv = argv;
-	p->path = get_path(env);
-	return (p);
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 18:51:40 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/17 16:47:35 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/17 17:58:40 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,15 @@
 int	main(int argc, char **argv, char **env)
 {
 	t_pip	*p;
-	p = pip_init(p);
+
+	if (argc != 5)
+	{
+		printf("Error: wrong number of arguments\n");
+		return (0);
+	}
+	p = malloc(sizeof(t_pip));
+	p = pip_init(p, argv, env);
+	print_path(p);
 }
 
 // int main(void)
