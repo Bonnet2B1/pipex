@@ -6,14 +6,14 @@
 #    By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 19:27:00 by edelarbr          #+#    #+#              #
-#    Updated: 2023/07/17 17:43:26 by edelarbr         ###   ########.fr        #
+#    Updated: 2023/07/18 22:13:09 by edelarbr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
-SRCS =	*/*.c \
-		*/*/*.c
+SRCS =	srcs/*.c \
+		srcs/*/*.c
 
 OBJS :=	$(SRCS:.c=.o)
 
