@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/23 21:45:53 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/17 18:51:47 by edelarbr         ###   ########.fr       */
+/*   Created: 2022/07/25 14:37:51 by edelarbr          #+#    #+#             */
+/*   Updated: 2023/07/17 19:17:52 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-int	ft_strncmp(char *s1, char *s2, size_t n)
+void	ft_putstr(char *str)
 {
-	size_t	i;
+	int	i;
 
+	if (!str)
+		return ;
 	i = 0;
-	while ((s1[i] || s2[i]) && i < n)
+	while (str[i])
 	{
-		if (!ft_isascii(s1[i]) || !ft_isascii(s2[i]))
-			i++;
-		if ((s1[i] > s2[i]) || !s2[i])
-			return (1);
-		if ((s1[i] < s2[i]) || !s1[i])
-			return (-1);
+		write (1, &str[i], 1);
 		i++;
 	}
-	return (0);
 }

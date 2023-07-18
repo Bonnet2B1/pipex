@@ -51,7 +51,7 @@ static char	*nextword(const char *s, size_t *i, char c, size_t len)
 	y = 0;
 	while (s[*i] == c)
 		(*i)++;
-	cpy = malloc(sizeof(char) * (len + 1));
+	cpy = malloc(sizeof(char) * (len + 2));
 	if (!cpy)
 		return (NULL);
 	while (len)
@@ -59,7 +59,8 @@ static char	*nextword(const char *s, size_t *i, char c, size_t len)
 		cpy[y++] = s[(*i)++];
 		len--;
 	}
-	cpy[y] = '\0';
+	cpy[y] = '/';
+	cpy[++y] = '\0';
 	return (cpy);
 }
 
@@ -77,7 +78,7 @@ static char	**freeall_split(char **tab, size_t indice)
 	return (NULL);
 }
 
-char	**ft_split(const char *s, char c)
+char	**ft_split_w_slash(const char *s, char c)
 {
 	size_t	i;
 	size_t	y;
