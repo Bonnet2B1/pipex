@@ -6,27 +6,51 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 18:51:40 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/17 19:37:14 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/18 16:55:15 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+#include <sys/fcntl.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+void	ft_execmd(t_pip *p, char **cmd_split)
+{
+	if (execve(find_cmd_path(p, cmd_split[0]), cmd_split, NULL) == -1)
+		return (ft_putstr("Error: execve\n"));
+}
 
 int	main(int argc, char **argv, char **env)
 {
 	t_pip	*p;
+	int		pipe_fd[2];
+	int		pid;
 
-	if (argc != 5)
-	{
-		ft_putstr("Error\nWrong number of arguments\n");
-		return (0);
-	}
+	(void)argc;
+	
 	p = malloc(sizeof(t_pip));
 	p = pip_init(p, argv, env);
 	
-	system(find_cmd_path(p, "ls"));
-	print_path(p);
-	printf("fd = %d\n", open("/Users/eli/Documents/GitHub/Cursus/pipex/stdin.txt", O_RDONLY));
+	if (pipe(pipe_fd) == -1)
+		return (ft_putstr("Error: pipe\n"), 0);
+	pid = fork();
+	
+	if (pid < 0)
+		return (ft_putstr("Error: fork\n"), 0);
+	
+	else if (pid == 0)
+	{
+		// chaild process (cmd1)
+		pipe_fd[1] = open(p->stdout, O_RDWR | O_CREAT | O_TRUNC, 0644);
+		dup2(pipe_fd[1], STDOUT_FILENO);
+		ft_execmd(p, p->cmd1_split);
+	}
+	waitpid(pid, NULL, 0);
+
+	// system(find_cmd_path(p, "ls"));
+	// print_path(p);
+	// printf("fd = %d\n", open("/Users/eli/Documents/GitHub/Cursus/pipex/stdin.txt", O_RDONLY));
 }
 
 // int main(void)

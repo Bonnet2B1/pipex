@@ -6,7 +6,7 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 17:55:15 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/17 19:20:40 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/18 16:44:14 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,21 @@
 typedef struct s_pip
 {
 	char	**argv;
+	char	**env;
+	char	*stdin;
+	char	*cmd1;
+	char	*cmd2;
+	char	*stdout;
 	char	**path;
 	char	*cmd_path;
 	int		fd;
+	char	**cmd1_split;
+	char	**cmd2_split;
 }			t_pip;
 
 //	utils
 t_pip		*pip_init(t_pip *p, char **argv, char **env);
+char		**ft_split(const char *s, char c);
 char		**ft_split_w_slash(const char *s, char c);
 int			ft_isascii(int c);
 int			ft_strncmp(char *s1, char *s2, size_t n);
