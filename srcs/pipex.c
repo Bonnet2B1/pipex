@@ -6,7 +6,7 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 18:51:40 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/18 18:51:06 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/18 18:57:41 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ int	main(int argc, char **argv, char **env)
 	close(pipe_fd[1]);
 	close(pipe_fd[0]);
 
-	waitpid(pid1, NULL, 0);
-	waitpid(pid2, NULL, 0);  
+	// waitpid(pid1, NULL, 0);
+	// waitpid(pid2, NULL, 0);  
 
 	// system(find_cmd_path(p, "ls"));
 	// print_path(p);

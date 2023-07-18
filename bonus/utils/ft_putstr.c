@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_path.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 17:55:39 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/17 18:07:34 by edelarbr         ###   ########.fr       */
+/*   Created: 2022/07/25 14:37:51 by edelarbr          #+#    #+#             */
+/*   Updated: 2023/07/18 19:16:20 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	print_path(t_pip *p)
+void	ft_putstr(char *str)
 {
 	int	i;
 
-	i = -1;
-	printf("PATH:\n");
-	while (p->path[++i])
-		printf("%s\n", p->path[i]);
+	if (!str)
+		return ;
+	i = 0;
+	while (str[i])
+	{
+		write (1, &str[i], 1);
+		i++;
+	}
 }
