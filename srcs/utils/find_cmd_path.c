@@ -6,7 +6,7 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 18:24:04 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/17 18:55:23 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/18 21:07:05 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*find_cmd_path(t_pip *p, char *cmd)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (p->path[++i])
