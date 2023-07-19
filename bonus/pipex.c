@@ -6,7 +6,7 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 18:51:40 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/18 19:45:44 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/19 19:07:40 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 void	ft_execmd(t_pip *p, char **cmd_split)
 {
 	if (execve(find_cmd_path(p, cmd_split[0]), cmd_split, NULL) == -1)
-		return (ft_putstr("Error: execve\n"));
+		return (ft_putstr("Error : execve\n"));
 }
 
 int	main(int argc, char **argv, char **env)
@@ -34,11 +34,11 @@ int	main(int argc, char **argv, char **env)
 	{
 		p = pip_init(p, argc, argv, env);
 		if (pipe(pipe_fd) == -1)
-			return (ft_putstr("Error: pipe\n"), 0);
+			return (ft_putstr("Error : pipe\n"), 0);
 		
 		pid1 = fork();
 		if (pid1 < 0)
-			return (ft_putstr("Error: fork\n"), 0);
+			return (ft_putstr("Error : fork\n"), 0);
 
 		if (pid1 == 0)
 		{
@@ -52,7 +52,7 @@ int	main(int argc, char **argv, char **env)
 		
 		pid2 = fork();
 		if (pid2 < 0)
-			return (ft_putstr("Error: fork\n"), 0);
+			return (ft_putstr("Error : fork\n"), 0);
 
 		if (pid2 == 0)
 		{
@@ -80,11 +80,11 @@ int	main(int argc, char **argv, char **env)
 			printf("cmd1 = %s\n", p->cmd1);
 			printf("cmd2 = %s\n", p->cmd2);
 			if (pipe(pipe_fd) == -1)
-				return (ft_putstr("Error: pipe\n"), 0);
+				return (ft_putstr("Error : pipe\n"), 0);
 			
 			pid1 = fork();
 			if (pid1 < 0)
-				return (ft_putstr("Error: fork\n"), 0);
+				return (ft_putstr("Error : fork\n"), 0);
 
 			if (pid1 == 0)
 			{
@@ -98,7 +98,7 @@ int	main(int argc, char **argv, char **env)
 			
 			pid2 = fork();
 			if (pid2 < 0)
-				return (ft_putstr("Error: fork\n"), 0);
+				return (ft_putstr("Error : fork\n"), 0);
 
 			if (pid2 == 0)
 			{

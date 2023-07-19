@@ -1,27 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_init.c                                      :+:      :+:    :+:   */
+/*   free_print_exit.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 16:45:25 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/19 18:20:07 by edelarbr         ###   ########.fr       */
+/*   Created: 2023/07/19 16:07:56 by edelarbr          #+#    #+#             */
+/*   Updated: 2023/07/19 19:26:34 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-t_pip	*pip_init(t_pip *p, int argc, char **argv, char **env)
+void	free_tab(char **tab)
 {
-	p->argv = argv;
-	p->env = env;
-	p->paths = get_paths(env);
-	p->stdin = argv[1];
-	p->cmd1 = argv[p->i + 2];
-	p->cmd2 = argv[p->i + 3];
-	p->stdout = argv[argc - 1];
-	p->cmd1_split = ft_split(p->cmd1, ' ');
-	p->cmd2_split = ft_split(p->cmd2, ' ');
-	return (p);
+	int	i;
+
+	i = 0;
+	if (!tab)
+		return ;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+	tab = NULL;
+}
+
+void	freeall(t_pip *p)
+{
+	if (p)
+	{
+		free_tab(p->cmd1_split);
+		free_tab(p->cmd2_split);
+		free_tab(p->paths);
+		if (p->cmd_path)
+			free(p->cmd_path);
+		p->cmd_path = NULL;
+		free(p);
+	}
+}
+
+void	free_print_exit(t_pip *p, char *str)
+{
+	freeall(p);
+	ft_putstr(str);
+	exit(0);
 }

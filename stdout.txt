@@ -1,2 +1,2 @@
-trop
-cho
+-rwxr-xr-x  1 edelarbr  2022_mulhouse  55064 Jul 19 19:56 pipex
+drwxr-xr-x  3 edelarbr  2022_mulhouse    102 Jul 18 22:13 pipex.dSYM
