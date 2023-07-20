@@ -1,50 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_print_exit.c                                  :+:      :+:    :+:   */
+/*   get_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 16:07:56 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/20 18:20:29 by edelarbr         ###   ########.fr       */
+/*   Created: 2023/07/17 17:25:39 by edelarbr          #+#    #+#             */
+/*   Updated: 2023/07/18 19:16:20 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	free_tab(char **tab)
+char	**get_paths(char **env)
 {
-	int	i;
+	int		i;
+	char	**path;
 
-	i = 0;
-	if (!tab)
-		return ;
-	while (tab[i])
+	i = -1;
+	while (env[++i])
 	{
-		free(tab[i]);
-		i++;
+		if (ft_strncmp(env[i], "PATH=", 5) == 0)
+			path = ft_split_w_slash(env[i] + 5, ':');
 	}
-	free(tab);
-	tab = NULL;
-}
-
-void	freeall(t_pip *p)
-{
-	if (p)
-	{
-		free_tab(p->cmd1_split);
-		free_tab(p->cmd2_split);
-		free_tab(p->paths);
-		if (p->cmd_path)
-			free(p->cmd_path);
-		p->cmd_path = NULL;
-		free(p);
-	}
-}
-
-void	free_print_exit(t_pip *p, char *str)
-{
-	freeall(p);
-	ft_putstr(str);
-	exit(0);
+	return (path);
 }

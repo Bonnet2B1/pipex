@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   parser_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 17:33:52 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/20 18:20:11 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:22:39 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	parser(t_pip *p, int argc, char **argv, char **env)
+void	parser_bonus(t_pip *p, int argc, char **argv, char **env)
 {
 	int	fd;
 	int	i;
 
 	pip_init_to_null(p);
-	if (argc != 5)
+	if (argc < 5)
 		return (free_print_exit(p, "Error : wrong number of arguments\n"));
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)

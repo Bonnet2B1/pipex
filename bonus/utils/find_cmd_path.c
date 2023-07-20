@@ -6,7 +6,7 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 18:24:04 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/19 18:20:07 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/19 18:57:10 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*find_cmd_path(t_pip *p, char *cmd)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (p->paths[++i])
@@ -22,8 +22,11 @@ char	*find_cmd_path(t_pip *p, char *cmd)
 		p->cmd_path = ft_strjoin(p->paths[i], cmd);
 		if (access(p->cmd_path, F_OK | X_OK) == 0)
 			return (p->cmd_path);
-		else
+		else if (p->cmd_path)
+		{
 			free(p->cmd_path);
+			p->cmd_path = NULL;
+		}
 	}
 	return (NULL);
 }

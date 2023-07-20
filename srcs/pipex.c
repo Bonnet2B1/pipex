@@ -6,7 +6,7 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 18:51:40 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/20 16:07:35 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:28:02 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	main(int argc, char **argv, char **env)
 	t_pip	*p;
 
 	(void)argc;
-
 	p = malloc(sizeof(t_pip));
 	if (!p)
 		return (free_print_exit(p, "Error : malloc failed\n"), 0);

@@ -1,2 +1,1 @@
--rwxr-xr-x  1 edelarbr  2022_mulhouse  55064 Jul 19 19:56 pipex
-drwxr-xr-x  3 edelarbr  2022_mulhouse    102 Jul 18 22:13 pipex.dSYM
+round-trip min/avg/max/stddev = 16.426/22.323/32.966/7.143 ms
