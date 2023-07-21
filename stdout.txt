@@ -1,1 +1,0 @@
-round-trip min/avg/max/stddev = 16.426/22.323/32.966/7.143 ms

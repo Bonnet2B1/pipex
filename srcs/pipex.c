@@ -6,7 +6,7 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 18:51:40 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/20 18:28:02 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:12:25 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ int	main(int argc, char **argv, char **env)
 	if (pipe(p->pipe_fd) == -1)
 		return (free_print_exit(p, "Error : pipe failed\n"), 0);
 	pipe_n_execmd1(p, fork());
-	pipe_n_execmd2(p, fork());
 	close(p->pipe_fd[1]);
+	pipe_n_execmd2(p, fork());
 	close(p->pipe_fd[0]);
 	free_print_exit(p, NULL);
 }

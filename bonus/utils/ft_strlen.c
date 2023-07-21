@@ -6,11 +6,11 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 14:37:13 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/17 18:50:46 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/21 17:05:00 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../pipex_bonus.h"
 
 int	ft_strlen(char *str)
 {

@@ -6,23 +6,53 @@
 #    By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 19:27:00 by edelarbr          #+#    #+#              #
-#    Updated: 2023/07/19 19:53:53 by edelarbr         ###   ########.fr        #
+#    Updated: 2023/07/21 20:19:58 by edelarbr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pipex
+NAME		:=	pipex
+NAME_BONUS	:=	multipipex
 
-SRCS =	srcs/*.c \
-		srcs/*/*.c
+# ------------------------------ Sources -----------------------------
 
-OBJS :=	$(SRCS:.c=.o)
+SRCS :=			srcs/utils/find_cmd_path.c \
+				srcs/utils/ft_strlen.c \
+				srcs/utils/struct_init.c \
+				srcs/utils/ft_strjoin.c \
+				srcs/utils/ft_isascii.c \
+				srcs/utils/ft_split.c \
+				srcs/utils/ft_strncmp.c \
+				srcs/utils/ft_putstr.c \
+				srcs/utils/ft_split_w_slash.c \
+				srcs/utils/free_print_exit.c \
+				srcs/utils/get_path.c \
+				srcs/parser/parser.c \
+				srcs/pipex.c \
+
+SRCS_BONUS :=	bonus/utils/find_cmd_path.c \
+				bonus/utils/ft_strlen.c \
+				bonus/utils/ft_strjoin.c \
+				bonus/utils/ft_isascii.c \
+				bonus/utils/ft_split.c \
+				bonus/utils/ft_strncmp.c \
+				bonus/utils/ft_putstr.c \
+				bonus/utils/ft_split_w_slash.c \
+				bonus/utils/free_print_exit.c \
+				bonus/utils/get_path.c \
+				bonus/utils/struct_init_bonus.c \
+				bonus/parser/parser_bonus.c \
+				bonus/pipex_bonus.c \
+
+OBJS		:=	$(SRCS:.c=.o)
+OBJS_BONUS	:=	$(SRCS_BONUS:.c=.o)
 
 .c.o:
-	@ $(GCC) -c $< -o $(<:.c=.o)
+	@ $(CC) $(FLAGS) -c $< -o $(<:.c=.o)
 
 # ------------------------------ Flags -------------------------------
 
-GCC = @gcc -Wall -Werror -Wextra -g #-fsanitize=address
+CC			:=	gcc
+FLAGS		:=	-Wall -Wextra -Werror
 
 # ------------------------------ Colors ------------------------------
 
@@ -37,25 +67,32 @@ CYAN 		:=	\033[1;36m
 
 # ------------------------------ so_long --------------------------------
 
-RM			:=	rm -f
 
-all: $(NAME)
+all:			$(NAME)
 
-$(NAME):
+bonus:			$(NAME_BONUS)
+
+$(NAME):		$(OBJS)
 				@ echo "$(GREEN)Compilation $(CLR_RMV)of $(YELLOW)$(NAME) $(CLR_RMV)..."
-				@ $(GCC) $(SRCS) -o $(NAME)
-				@ echo "$(GREEN)$(NAME) created[0m ✔️"
+				@ $(CC) $(FLAGS) -o $(NAME) $(OBJS)
+				@ echo "$(GREEN)$(NAME) created $(CLR_RMV)✔️"
+
+$(NAME_BONUS):	$(OBJS_BONUS)
+				@ echo "$(GREEN)Compilation $(CLR_RMV)of $(YELLOW)$(NAME_BONUS) $(CLR_RMV)..."
+				@ $(CC) $(FLAGS) -o $(NAME_BONUS) $(OBJS_BONUS)
+				@ echo "$(GREEN)$(NAME_BONUS) created $(CLR_RMV)✔️"
+
 
 # --  ---------------------------- Rules -----------------------------------
 
 clean:
 				@ $(RM) $(OBJS) $(OBJS_BONUS)
-				@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)objs ✔️"
+				@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)and $(CYAN)$(NAME_BONUS) $(CLR_RMV)objs ✔️"
 
 fclean:			clean
 				@ $(RM) $(NAME) $(RM) $(NAME_BONUS)
-				@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)binary ✔️"
+				@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)and $(CYAN)$(NAME_BONUS) $(CLR_RMV)binary ✔️"
 
 re:				fclean all
 
-.PHONY:			all fclean re
+.PHONY:			all clean fclean re

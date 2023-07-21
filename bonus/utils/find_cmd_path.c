@@ -6,11 +6,11 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 18:24:04 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/19 18:57:10 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/21 18:56:16 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../pipex_bonus.h"
 
 char	*find_cmd_path(t_pip *p, char *cmd)
 {

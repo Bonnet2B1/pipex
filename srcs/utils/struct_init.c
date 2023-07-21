@@ -6,7 +6,7 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:45:25 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/20 18:19:04 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/21 17:33:46 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 
 t_pip	*pip_init_to_null(t_pip *p)
 {
-	p->argv = NULL;
-	p->env = NULL;
-	p->paths = NULL;
-	p->stdin = NULL;
-	p->cmd1 = NULL;
-	p->cmd2 = NULL;
-	p->stdout = NULL;
 	p->cmd_path = NULL;
 	p->cmd1_split = NULL;
 	p->cmd2_split = NULL;

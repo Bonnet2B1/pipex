@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 18:51:40 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/20 18:20:39 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:11:01 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-#include <sys/fcntl.h>
-#include <sys/wait.h>
-#include <unistd.h>
+#include "pipex_bonus.h"
+#include <stdio.h>
 
 void	ft_execmd(t_pip *p, char **cmd_split)
 {
-	if (execve(find_cmd_path(p, cmd_split[0]), cmd_split, NULL) == -1)
+	find_cmd_path(p, cmd_split[0]);
+	if (execve(p->cmd_path, cmd_split, NULL) == -1)
 		return (free_print_exit(p, "Error : execve\n"));
 }
 
@@ -59,13 +58,19 @@ int	main(int argc, char **argv, char **env)
 	p = malloc(sizeof(t_pip));
 	if (!p)
 		return (free_print_exit(p, "Error : malloc failed\n"), 0);
-	parser(p, argc, argv, env);
-	p = pip_init(p, argv, env);
-	if (pipe(p->pipe_fd) == -1)
-		return (free_print_exit(p, "Error : pipe failed\n"), 0);
-	pipe_n_execmd1(p, fork());
-	pipe_n_execmd2(p, fork());
-	close(p->pipe_fd[1]);
-	close(p->pipe_fd[0]);
-	free_print_exit(p, NULL);
+	parser_bonus(p, argc, argv, env);
+	p->i = -1;
+	while (++(p->i) + 4 < argc)
+	{
+		p = pip_init(p, argc, argv, env);
+		if (pipe(p->pipe_fd) == -1)
+			return (free_print_exit(p, "Error : pipe failed\n"), 0);
+		pipe_n_execmd1(p, fork());
+		close(p->pipe_fd[1]);
+		pipe_n_execmd2(p, fork());
+		close(p->pipe_fd[0]);
+		p->cmd1_split = free_tab(p->cmd1_split);
+		p->cmd2_split = free_tab(p->cmd2_split);
+	}
+	freeall(p);
 }

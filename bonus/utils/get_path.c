@@ -6,11 +6,11 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 17:25:39 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/19 18:38:35 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/21 17:05:00 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../pipex_bonus.h"
 
 char	**get_paths(char **env)
 {

@@ -6,35 +6,35 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:07:56 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/20 18:20:29 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/21 19:05:09 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../pipex_bonus.h"
 
-void	free_tab(char **tab)
+char	**free_tab(char **tab)
 {
 	int	i;
 
 	i = 0;
 	if (!tab)
-		return ;
+		return (NULL);
 	while (tab[i])
 	{
 		free(tab[i]);
 		i++;
 	}
 	free(tab);
-	tab = NULL;
+	return (tab = NULL);
 }
 
 void	freeall(t_pip *p)
 {
 	if (p)
 	{
-		free_tab(p->cmd1_split);
-		free_tab(p->cmd2_split);
-		free_tab(p->paths);
+		p->cmd1_split = free_tab(p->cmd1_split);
+		p->cmd2_split = free_tab(p->cmd2_split);
+		p->paths = free_tab(p->paths);
 		if (p->cmd_path)
 			free(p->cmd_path);
 		p->cmd_path = NULL;

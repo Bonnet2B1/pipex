@@ -6,11 +6,11 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 21:45:53 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/17 18:51:47 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/21 17:05:00 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../pipex_bonus.h"
 
 int	ft_strncmp(char *s1, char *s2, size_t n)
 {

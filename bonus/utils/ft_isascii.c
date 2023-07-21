@@ -6,11 +6,11 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 10:48:56 by ggane             #+#    #+#             */
-/*   Updated: 2023/07/17 17:49:42 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/21 17:05:00 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../pipex_bonus.h"
 
 int	ft_isascii(int c)
 {
