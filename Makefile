@@ -6,12 +6,13 @@
 #    By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 19:27:00 by edelarbr          #+#    #+#              #
-#    Updated: 2023/07/21 22:18:08 by edelarbr         ###   ########.fr        #
+#    Updated: 2023/07/22 16:55:49 by edelarbr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	pipex
-NAME_BONUS	:=	multipipex
+
+NAME_BONUS	:=	pipex_bonus
 
 # ------------------------------ Sources -----------------------------
 
@@ -65,7 +66,7 @@ YELLOW		:=	\033[1;33m
 BLUE		:=	\033[1;34m
 CYAN 		:=	\033[1;36m
 
-# ------------------------------ so_long --------------------------------
+# ------------------------------ Programme ---------------------------
 
 
 all:			$(NAME)
@@ -83,7 +84,7 @@ $(NAME_BONUS):	$(OBJS_BONUS)
 				@ echo "$(GREEN)$(NAME_BONUS) created $(CLR_RMV)✔️"
 
 
-# --  ---------------------------- Rules -----------------------------------
+# --  ---------------------------- Rules -----------------------------
 
 clean:
 				@ $(RM) $(OBJS) $(OBJS_BONUS)
@@ -95,4 +96,4 @@ fclean:			clean
 
 re:				fclean all
 
-.PHONY:			all clean fclean re
+.PHONY:			all bonus clean fclean re
