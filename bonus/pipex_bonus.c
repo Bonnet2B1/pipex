@@ -6,7 +6,7 @@
 /*   By: edelarbr <edelarbr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 18:51:40 by edelarbr          #+#    #+#             */
-/*   Updated: 2023/07/21 20:11:01 by edelarbr         ###   ########.fr       */
+/*   Updated: 2023/07/25 16:32:14 by edelarbr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ int	main(int argc, char **argv, char **env)
 			return (free_print_exit(p, "Error : pipe failed\n"), 0);
 		pipe_n_execmd1(p, fork());
 		close(p->pipe_fd[1]);
+		if (unlink(p->stdout) == -1)
+			return (free_print_exit(p, "Error : unlink failed\n"), 0);
 		pipe_n_execmd2(p, fork());
 		close(p->pipe_fd[0]);
 		p->cmd1_split = free_tab(p->cmd1_split);
